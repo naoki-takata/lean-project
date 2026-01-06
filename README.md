@@ -42,42 +42,55 @@ Output: `Hello, world!`
 
 ```
 .
-├── Main.lean              # Entry point
-├── MyProject.lean         # Library root
+├── Main.lean                    # Entry point
+├── MyProject.lean               # Library root (imports all modules)
 ├── MyProject/
-│   └── Basic.lean         # Core definitions and theorems
-├── lakefile.toml          # Build configuration
-└── lean-toolchain         # Lean version specification
+│   ├── Basic.lean               # Core definitions
+│   ├── Logic.lean               # Logic theorems
+│   ├── NumberTheory.lean        # Number theory theorems
+│   ├── Lists.lean               # List theorems
+│   ├── Functions.lean           # Function theorems
+│   └── Equality.lean            # Equality theorems
+├── lakefile.toml                # Build configuration
+└── lean-toolchain               # Lean version specification
 ```
 
-## Theorems
+## Theorem Categories
 
-Explore these example theorems in `MyProject/Basic.lean`:
+### Logic (`MyProject/Logic.lean`)
+Fundamental logical propositions and their proofs:
+- **De Morgan's Law**: `¬(P ∨ Q) ↔ (¬P ∧ ¬Q)`
+- **Contrapositive**: `(P → Q) → (¬Q → ¬P)`
+- **Modus Ponens**: `P ∧ (P → Q) → Q`
+- **Double Negation**: `P → ¬¬P` and `¬¬P → P`
+- **Currying**: `(P ∧ Q → R) ↔ (P → Q → R)`
+- **And/Or Commutativity and Distributivity**
 
-### 1. Right Identity of Addition
-```lean
-theorem add_zero (n : Nat) : n + 0 = n := rfl
-```
-Any number plus zero equals itself. Simple but fundamental!
+### Number Theory (`MyProject/NumberTheory.lean`)
+Proofs about natural numbers and arithmetic:
+- **Sum Formula (Gauss)**: `2 * (0 + 1 + ... + n) = n * (n + 1)`
+- **Even Number Properties**: Sum of even numbers is even
+- **Basic Arithmetic**: Commutativity, associativity, distributivity
 
-### 2. Identity Function
-```lean
-theorem identity (P : Prop) : P → P := fun h => h
-```
-If P is true, then P is true. The simplest logical tautology!
+### Lists (`MyProject/Lists.lean`)
+Proofs about list operations:
+- **Reverse Involution**: `xs.reverse.reverse = xs`
+- **Length Preservation**: `(xs ++ ys).length = xs.length + ys.length`
+- **Map Length**: `(xs.map f).length = xs.length`
+- **Append Associativity**: `(xs ++ ys) ++ zs = xs ++ (ys ++ zs)`
 
-### 3. Commutativity of Addition
-```lean
-theorem add_comm_example (a b : Nat) : a + b = b + a := Nat.add_comm a b
-```
-Order doesn't matter in addition: 2 + 3 = 3 + 2
+### Functions (`MyProject/Functions.lean`)
+Proofs about functions and composition:
+- **Composition Associativity**: `(f ∘ g) ∘ h = f ∘ (g ∘ h)`
+- **Injectivity Properties**: Composition preserves injectivity
+- **Surjectivity Properties**: Composition preserves surjectivity
+- **Identity Function Properties**
 
-### 4. Transitivity of Equality
-```lean
-theorem eq_trans_example (a b c : Nat) (h1 : a = b) (h2 : b = c) : a = c := by
-  rw [h1, h2]
-```
-If a = b and b = c, then a = c. A chain of equalities!
+### Equality (`MyProject/Equality.lean`)
+Proofs about equality relations:
+- **Reflexivity, Symmetry, Transitivity**
+- **Substitution and Congruence**
+- **Equality with Arithmetic Operations**
 
 ## Learn More
 
