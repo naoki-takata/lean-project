@@ -4,7 +4,7 @@
 -/
 
 -- Simple theorem: for all natural numbers n, n + 0 = n
-theorem add_zero (n : Nat) : n + 0 = n := rfl
+theorem nat_add_zero (n : Nat) : n + 0 = n := rfl
 
 -- Addition is commutative
 theorem add_comm_example (a b : Nat) : a + b = b + a := Nat.add_comm a b

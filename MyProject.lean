@@ -7,3 +7,4 @@ import MyProject.NumberTheory
 import MyProject.Lists
 import MyProject.Functions
 import MyProject.Equality
+import MyProject.Advanced
